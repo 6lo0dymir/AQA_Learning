@@ -27,10 +27,10 @@ public class Park {
     }
 
     public static void main(String[] args) {
-        Park Gorky = new Park("Им. Горько", "Москва");
-        Park.Attractions karusel = Gorky.new Attractions("Карусель", "С 10-00 до 20-00", 155.50);
+        Park Gorky = new Park("Им. Горького", "Москва");
+        Park.Attractions carousel = Gorky.new Attractions("Карусель", "С 10-00 до 20-00", 155.50);
         Gorky.printParkInfo();
-        karusel.printAttractionInfo();
+        carousel.printAttractionInfo();
     }
 
 }
