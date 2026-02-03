@@ -15,7 +15,7 @@ public class Park {
             this.ticketPrice = ticketPrice;
         }
         public void printAttractionInfo(){
-            System.out.println("Название аттрациона: "+ attractionName);
+            System.out.println("Название аттракциона: "+ attractionName);
             System.out.println("Время работы: "+ workTime);
             System.out.println("Стоимость билета: " + ticketPrice +"р.");
         }
