@@ -84,18 +84,6 @@ class MyArrayDataException extends Exception {
 
     }
 
-    public int getCol() {
-        return col;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
 }
 
 
