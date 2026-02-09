@@ -1,4 +1,4 @@
-public class Exeptions_Lesson {
+public class Exceptions_Lesson {
     public static void main(String[] args) {
         String [][] correctArray = {
                 {"1","2","3","4"},
