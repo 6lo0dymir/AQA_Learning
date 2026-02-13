@@ -1,6 +1,7 @@
 public class FactorialCalculator {
     public static void main(String[] args) {
 
+
     }
 
     public static long calculateFactorial(int n) {
