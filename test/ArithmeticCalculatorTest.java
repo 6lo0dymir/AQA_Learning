@@ -68,9 +68,25 @@ class ArithmeticCalculatorTest {
     void testCalculatedDivide(int a, int b, int expected) {
         assertEquals(expected, ArithmeticCalculator.calculateDivide(a, b));
     }
+
     @Test
     @DisplayName("Тест 5. Деление на ноль")
-    void testDivideByZero(){
-        assertThrows(ArithmeticException.class,()-> ArithmeticCalculator.calculateDivide(5,0));
+    void testDivideByZero() {
+        assertThrows(ArithmeticException.class, () -> ArithmeticCalculator.calculateDivide(5, 0));
+    }
+
+    @Test
+    @DisplayName("Тест 6. Коммутативность умножения")
+    void testCommutativeMultiply() {
+        int a = 2, b = 3;
+        assertEquals(ArithmeticCalculator.calculateMultiply(a, b), ArithmeticCalculator.calculateMultiply(b, a));
+    }
+    @Test
+    @DisplayName("Тест 7. Ассоциативность сложения")
+    void testAssociateSum(){
+        int a = 2, b = 3, c = 5;
+        int leftSide = ArithmeticCalculator.calculateSum(ArithmeticCalculator.calculateSum(a,b),c);
+        int rightSide = ArithmeticCalculator.calculateSum(a,ArithmeticCalculator.calculateSum(b,c));
+        assertEquals(leftSide,rightSide);
     }
 }
