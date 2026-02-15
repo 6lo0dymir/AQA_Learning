@@ -86,21 +86,24 @@ public class ArithmeticCalculatorTest {
         int result = ArithmeticCalculator.calculateDivide(a, b);
         Assert.assertEquals(result, expected);
     }
-    @Test (priority = 5, description = "Тест деления на ноль")
-    public void testDivideByZero(){
-        Assert.assertThrows(ArithmeticException.class,()->ArithmeticCalculator.calculateDivide(5,0));
+    @Test(priority = 5,
+            description = "Тест деления на ноль",
+            expectedExceptions = ArithmeticException.class)
+    public void testDivideByZero() {
+        ArithmeticCalculator.calculateDivide(5, 0);
     }
     @Test (priority = 6, description = "Коммутативность умножения")
     public void testCommutative(){
         int a = 2, b = 3;
         Assert.assertEquals(ArithmeticCalculator.calculateMultiply(a,b),
-                ArithmeticCalculator.calculateMultiply(a,b));
+                ArithmeticCalculator.calculateMultiply(b,a));
     }
     @Test (priority = 7, description = "Ассоциативность сложения")
     public void testSumAssociative(){
-        int a = 3, b = 4, c = 6;
+        int a = 2, b = 4, c = 6;
         int lefSide = ArithmeticCalculator.calculateSum(ArithmeticCalculator.calculateSum(a,b),c);
         int rightSide = ArithmeticCalculator.calculateSum(a,ArithmeticCalculator.calculateSum(b,c));
+        Assert.assertEquals(lefSide,rightSide);
     }
 
 }

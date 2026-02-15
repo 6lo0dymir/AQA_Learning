@@ -42,17 +42,28 @@ public class TriangleAreaCalculateTest {
         double result = TriangleAreaCalculate.calculateByHeron(0.0001,0.0001,0.0001);
         Assert.assertEquals(result, 0,0.000001);
     }
-    @Test(priority = 5, description = "Тест 5. Треугольник с нулевой стороной")
-    public void testZeroSide(){
-        Assert.assertThrows(IllegalArgumentException.class, ()-> TriangleAreaCalculate.calculateByHeron(10,12,0));
+    @Test(priority = 5,
+            description = "Тест 5. Треугольник с нулевой стороной",
+            expectedExceptions = IllegalArgumentException.class,
+            expectedExceptionsMessageRegExp = "Сторона не может быть равна 0 или отрицательной!")
+    public void testZeroSide() {
+        TriangleAreaCalculate.calculateByHeron(10, 12, 0);
     }
-    @Test(priority = 6, description = "Тест 6. Отрицательная сторона")
-    public void testNegativeSide(){
-        Assert.assertThrows(IllegalArgumentException.class, ()-> TriangleAreaCalculate.calculateByHeron(-10,12,20));
+
+    @Test(priority = 6,
+            description = "Тест 6. Отрицательная сторона",
+            expectedExceptions = IllegalArgumentException.class,
+            expectedExceptionsMessageRegExp = "Сторона не может быть равна 0 или отрицательной!")
+    public void testNegativeSide() {
+        TriangleAreaCalculate.calculateByHeron(-10, 12, 20);
     }
-    @Test(priority = 7, description = "Тест 7. Несуществующий треугольник")
-    public void testTriangleNotExist(){
-        Assert.assertThrows(IllegalArgumentException.class, ()-> TriangleAreaCalculate.calculateByHeron(1,2,5));
+
+    @Test(priority = 7,
+            description = "Тест 7. Несуществующий треугольник",
+            expectedExceptions = IllegalArgumentException.class,
+            expectedExceptionsMessageRegExp = "Такого треугольника не существует!")
+    public void testTriangleNotExist() {
+        TriangleAreaCalculate.calculateByHeron(1, 2, 5);
     }
 
 
