@@ -4,22 +4,22 @@ import org.testng.Assert;
 
 public class FactorialCalculatorTest {
 
-    @BeforeClass()
+    @BeforeClass
     static void initAll() {
         System.out.println("Начало тестирования FactorialCalculator");
     }
 
-    @AfterClass()
+    @AfterClass
     static void tearDownAll() {
         System.out.println("Завершение тестирования FactorialCalculator");
     }
 
-    @BeforeMethod()
+    @BeforeMethod
     public void setUp() {
         System.out.println("Запуск теста");
     }
 
-    @AfterMethod()
+    @AfterMethod
     public void tearDown() {
         System.out.println("Тест завершен");
     }

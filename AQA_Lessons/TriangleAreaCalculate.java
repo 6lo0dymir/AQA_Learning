@@ -2,7 +2,7 @@ public class TriangleAreaCalculate {
     public static void main(String[] args) {
 
         System.out.println("Правильный треугольник");
-        System.out.println(calculateByHeron(1,2,4));
+        System.out.println(calculateByHeron(10,12,20));
 
 
     }
