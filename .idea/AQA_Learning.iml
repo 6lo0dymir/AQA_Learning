@@ -15,5 +15,6 @@
     <orderEntry type="library" exported="" scope="TEST" name="junit.jupiter.engine" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="junit.jupiter.params" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="testng" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="github.aoreshin.allure.rest.assured" level="project" />
   </component>
 </module>
