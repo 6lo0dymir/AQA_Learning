@@ -49,9 +49,7 @@ public class MtsByTests {
     @Order(1)
     @DisplayName("Проверка названия блока")
     public void testBlockName() {
-        WebElement titleElement = driver.findElement(
-                By.xpath("//div[contains(@class, 'pay')]//h2")
-        );
+        WebElement titleElement = driver.findElement(By.xpath("//div[contains(@class, 'pay')]//h2"));
         String blockTitle = titleElement.getText();
         assertTrue(blockTitle.contains("Онлайн пополнение") || blockTitle.contains("без комиссии"));
     }
@@ -60,21 +58,11 @@ public class MtsByTests {
     @Order(2)
     @DisplayName("Проверка логотипов платежных систем")
     public void testPaymentSystemLogo() {
-        WebElement logoVisa = driver.findElement(
-                By.xpath("//img[contains(@src, 'visa.svg')]")
-        );
-        WebElement logoVerifiedByVisa = driver.findElement(
-                By.xpath("//img[contains(@src, 'visa-verified.svg')]")
-        );
-        WebElement logoMasterCard = driver.findElement(
-                By.xpath("//img[contains(@src, 'mastercard.svg')]")
-        );
-        WebElement logoMasterCardSecureCode = driver.findElement(
-                By.xpath("//img[contains(@src, 'mastercard-secure.svg')]")
-        );
-        WebElement logoBelkart = driver.findElement(
-                By.xpath("//img[contains(@src, 'belkart.svg')]")
-        );
+        WebElement logoVisa = driver.findElement(By.xpath("//img[contains(@src, 'visa.svg')]"));
+        WebElement logoVerifiedByVisa = driver.findElement(By.xpath("//img[contains(@src, 'visa-verified.svg')]"));
+        WebElement logoMasterCard = driver.findElement(By.xpath("//img[contains(@src, 'mastercard.svg')]"));
+        WebElement logoMasterCardSecureCode = driver.findElement(By.xpath("//img[contains(@src, 'mastercard-secure.svg')]"));
+        WebElement logoBelkart = driver.findElement(By.xpath("//img[contains(@src, 'belkart.svg')]"));
     }
 
     @Test
@@ -82,13 +70,9 @@ public class MtsByTests {
     @DisplayName("Проверка ссылки 'Подробнее о сервисе'")
     public void testMoreAboutServiceLink() {
         String initialUrl = driver.getCurrentUrl();
-        WebElement cookieButton = wait.until(
-                ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), 'Принять')]"))
-        );
+        WebElement cookieButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), 'Принять')]")));
         cookieButton.click();
-        WebElement moreAboutServiceLink = driver.findElement(
-                By.linkText("Подробнее о сервисе")
-        );
+        WebElement moreAboutServiceLink = driver.findElement(By.linkText("Подробнее о сервисе"));
         moreAboutServiceLink.click();
         String moreAboutServiceUrl = driver.getCurrentUrl();
         assertNotEquals(initialUrl, moreAboutServiceUrl, "Url не изменился");
@@ -101,25 +85,17 @@ public class MtsByTests {
     public void testPaymentForm() {
         String phoneNumber = "297777777";
         String payAmount = "100.00";
-        WebElement cookieButton = wait.until(
-                ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), 'Принять')]"))
-        );
+        WebElement cookieButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), 'Принять')]")));
         cookieButton.click();
-        WebElement phoneNumberField = driver.findElement(
-                By.id("connection-phone")
-        );
+        WebElement phoneNumberField = driver.findElement(By.id("connection-phone"));
         phoneNumberField.click();
         phoneNumberField.sendKeys(phoneNumber);
 
-        WebElement payAmountField = driver.findElement(
-                By.id("connection-sum")
-        );
+        WebElement payAmountField = driver.findElement(By.id("connection-sum"));
         payAmountField.click();
         payAmountField.sendKeys(payAmount);
 
-        WebElement buttonSubmit = driver.findElement(
-                By.xpath("//button[contains(text(), 'Продолжить')]")
-        );
+        WebElement buttonSubmit = driver.findElement(By.xpath("//button[contains(text(), 'Продолжить')]"));
         buttonSubmit.click();
 
     }
