@@ -20,11 +20,28 @@ public class HomePage {
     private By mastercardSecureLogo = By.xpath("//img[contains(@src, 'mastercard-secure.svg') ]");
     private By belkartLogo = By.xpath("//img[contains(@src, 'belkart.svg') and contains(@src, 'pay')]");
 
-    private By paymentTypeDropdown = By.xpath("//div[@class='select__header']");
-    private By paymentOptions = By.xpath("//div[@class='select__option']");
-    private By phoneField = By.id("connection-phone");
-    private By amountField = By.id("connection-sum");
-    private By emailField = By.id("connection-email");
+    private By paymentTypeDropdown = By.xpath("//button[@class='select__header']");
+    private By paymentOptions = By.xpath("//p[@class='select__option']");
+    // "Услуги связи"
+    private By servicesPhone = By.id("connection-phone");
+    private By servicesAmount = By.id("connection-sum");
+    private By servicesEmail = By.id("connection-email");
+
+    // "Домашний интернет"
+    private By internetPhone = By.id("internet-phone");
+    private By internetAmount = By.id("internet-sum");
+    private By internetEmail = By.id("internet-email");
+
+    // "Рассрочка"
+    private By instalmentPhone = By.id("score-instalment");
+    private By instalmentAmount = By.id("instalment-sum");
+    private By instalmentEmail = By.id("instalment-email");
+
+    // "Задолженность"
+    private By arrearsPhone = By.id("score-arrears");
+    private By arrearsAmount = By.id("arrears-sum");
+    private By arrearsEmail = By.id("arrears-email");
+
     private By continueButton = By.xpath("//button[contains(text(), 'Продолжить')]");
 
     public HomePage(WebDriver driver) {
@@ -63,46 +80,86 @@ public class HomePage {
     }
 
     public void selectPaymentOption(String optionText) {
-        driver.findElement(paymentTypeDropdown).click();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-        // Ищем нужную опцию и кликаем
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(paymentTypeDropdown));
+        dropdown.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(paymentOptions));
+
         var options = driver.findElements(paymentOptions);
+
         for (var option : options) {
             if (option.getText().contains(optionText)) {
                 option.click();
                 break;
             }
         }
-
-    }
-
-    public String getPhonePlaceholder() {
-        return driver.findElement(phoneField).getAttribute("placeholder");
-    }
-
-    public String getAmountPlaceholder() {
-        return driver.findElement(amountField).getAttribute("placeholder");
-    }
-
-    public String getEmailPlaceholder() {
-        return driver.findElement(emailField).getAttribute("placeholder");
-    }
-
-    public void fillPhoneForm(String phone, String amount, String email) {
-        driver.findElement(phoneField).sendKeys(phone);
-        driver.findElement(amountField).sendKeys(amount);
-        if (email != null && !email.isEmpty()) {
-            driver.findElement(emailField).sendKeys(email);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
+    // "Услуги связи"
+    public String getServicesPhonePlaceholder() {
+        return driver.findElement(servicesPhone).getAttribute("placeholder");
+    }
+
+    public String getServicesAmountPlaceholder() {
+        return driver.findElement(servicesAmount).getAttribute("placeholder");
+    }
+
+    public String getServicesEmailPlaceholder() {
+        return driver.findElement(servicesEmail).getAttribute("placeholder");
+    }
+
+    // "Домашний интернет"
+    public String getInternetPhonePlaceholder() {
+        return driver.findElement(internetPhone).getAttribute("placeholder");
+    }
+
+    public String getInternetAmountPlaceholder() {
+        return driver.findElement(internetAmount).getAttribute("placeholder");
+    }
+
+    public String getInternetEmailPlaceholder() {
+        return driver.findElement(internetEmail).getAttribute("placeholder");
+    }
+
+    // "Рассрочка"
+    public String getInstalmentPhonePlaceholder() {
+        return driver.findElement(instalmentPhone).getAttribute("placeholder");
+    }
+
+    public String getInstalmentAmountPlaceholder() {
+        return driver.findElement(instalmentAmount).getAttribute("placeholder");
+    }
+
+    public String getInstalmentEmailPlaceholder() {
+        return driver.findElement(instalmentEmail).getAttribute("placeholder");
+    }
+
+    // "Задолженность"
+    public String getArrearsPhonePlaceholder() {
+        return driver.findElement(arrearsPhone).getAttribute("placeholder");
+    }
+
+    public String getArrearsAmountPlaceholder() {
+        return driver.findElement(arrearsAmount).getAttribute("placeholder");
+    }
+
+    public String getArrearsEmailPlaceholder() {
+        return driver.findElement(arrearsEmail).getAttribute("placeholder");
+    }
+
 
     public void clickContinueButton() {
         driver.findElement(continueButton).click();
+    }
+    public void fillServicesForm(String phone, String amount, String email) {
+        driver.findElement(By.id("connection-phone")).sendKeys(phone);
+        driver.findElement(By.id("connection-sum")).sendKeys(amount);
+        driver.findElement(By.id("connection-email")).sendKeys(email);
     }
 }
 
