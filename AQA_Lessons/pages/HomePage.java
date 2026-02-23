@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 
 import java.time.*;
+import java.time.Duration;
 
 public class HomePage {
     private WebDriver driver;
