@@ -56,7 +56,7 @@ public class MtsByTests {
     @Order(2)
     @DisplayName("Проверка логотипов платежных систем")
     public void testPaymentSystemLogo() {
-        WebElement logoVisa = driver.findElement(By.xpath("//img[contains(@src, 'visa.svg') and contains(@alt, 'Visa')]"));
+        WebElement logoVisa = driver.findElement(By.xpath("//img[contains(@src, 'visa.svg') and contains(@src, 'pay')]"));
         WebElement logoVerifiedByVisa = driver.findElement(By.xpath("//img[contains(@src, 'visa-verified.svg')]"));
         WebElement logoMasterCard = driver.findElement(
                 By.xpath("//img[contains(@src, 'mastercard.svg') and contains(@src, 'pay')]"));
