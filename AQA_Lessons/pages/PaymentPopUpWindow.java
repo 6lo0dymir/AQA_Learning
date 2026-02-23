@@ -8,8 +8,10 @@ public class PaymentPopUpWindow {
     WebDriverWait wait;
 
     private By iframe = By.xpath("//div[@class='payment-widget-app']//iframe[contains(@src, 'checkout']");
-    private By amountOnCard = By.xpath("//div[@class='card-page__card']//span[@class='card-page__inner']");
-    private By amountOnButton = By.xpath("//button[contains(@class, 'card-page__button')]//span[contains(@class, 'card-page__inner')]");
+    private By amountOnCard = By.xpath(
+            "//div[@class='payment-page__order-description pay-description']//span[@class='ng-star-inserted']");
+    private By amountOnButton = By.xpath(
+            "//button[contains(@type, 'submit')]//span[contains(text(), 'Оплатить')]");
     private By phoneNumber = By.xpath("//div[@class='card-page__card']//div[@class='card-page__phone']");
 
     private By cardNumberField = By.id("cc-number");
