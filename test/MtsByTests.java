@@ -62,6 +62,14 @@ public class MtsByTests {
                 By.xpath("//img[contains(@src, 'mastercard.svg') and contains(@src, 'pay')]"));
         WebElement logoMasterCardSecureCode = driver.findElement(By.xpath("//img[contains(@src, 'mastercard-secure.svg')]"));
         WebElement logoBelkart = driver.findElement(By.xpath("//img[contains(@src, 'belkart.svg') and contains(@src, 'pay')]"));
+
+        Assertions.assertAll("Проверка логотипов платежных систем",
+                () -> Assertions.assertTrue(logoVisa.isDisplayed(), "Логотип Visa не отображается"),
+                () -> Assertions.assertTrue(logoVerifiedByVisa.isDisplayed(), "Логотип Verified by Visa не отображается"),
+                () -> Assertions.assertTrue(logoMasterCard.isDisplayed(), "Логотип MasterCard не отображается"),
+                () -> Assertions.assertTrue(logoMasterCardSecureCode.isDisplayed(), "Логотип MasterCard SecureCode не отображается"),
+                () -> Assertions.assertTrue(logoBelkart.isDisplayed(), "Логотип Belkart не отображается")
+        );
     }
 
     @Test
