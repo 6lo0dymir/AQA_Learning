@@ -14,11 +14,11 @@ public class HomePage {
     private By cookieButton = By.xpath("//button[contains(text(), 'Принять')]");
     private By moreAboutServiceLink = By.linkText("Подробнее о сервисе");
 
-    private By visaLogo = By.xpath("//img[contains(@src, 'visa.svg') and contains(@alt, 'Visa')]");
+    private By visaLogo = By.xpath("//img[contains(@src, 'visa.svg') and contains(@src, 'pay')]");
     private By visaVerifiedLogo = By.xpath("//img[contains(@src, 'visa-verified.svg')]");
-    private By mastercardLogo = By.xpath("//img[contains(@src, 'mastercard.svg')]");
-    private By mastercardSecureLogo = By.xpath("//img[contains(@src, 'mastercard-secure.svg')]");
-    private By belkartLogo = By.xpath("//img[contains(@src, 'belkart.svg')]");
+    private By mastercardLogo = By.xpath("//img[contains(@src, 'mastercard.svg') and contains(@src, 'pay')]");
+    private By mastercardSecureLogo = By.xpath("//img[contains(@src, 'mastercard-secure.svg') ]");
+    private By belkartLogo = By.xpath("//img[contains(@src, 'belkart.svg') and contains(@src, 'pay')]");
 
     private By paymentTypeDropdown = By.xpath("//div[@class='select__header']");
     private By paymentOptions = By.xpath("//div[@class='select__option']");
