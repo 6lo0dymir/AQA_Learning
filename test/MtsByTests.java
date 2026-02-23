@@ -23,10 +23,8 @@ public class MtsByTests {
 
     @BeforeEach
     public void setupTest() {
-        driver = new ChromeDriver();
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-blink-features=AutomationControlled");
         options.addArguments("--start-maximized");
 
         driver = new ChromeDriver(options);
@@ -58,11 +56,12 @@ public class MtsByTests {
     @Order(2)
     @DisplayName("Проверка логотипов платежных систем")
     public void testPaymentSystemLogo() {
-        WebElement logoVisa = driver.findElement(By.xpath("//img[contains(@src, 'visa.svg')]"));
+        WebElement logoVisa = driver.findElement(By.xpath("//img[contains(@src, 'visa.svg') and contains(@alt, 'Visa')]"));
         WebElement logoVerifiedByVisa = driver.findElement(By.xpath("//img[contains(@src, 'visa-verified.svg')]"));
-        WebElement logoMasterCard = driver.findElement(By.xpath("//img[contains(@src, 'mastercard.svg')]"));
+        WebElement logoMasterCard = driver.findElement(
+                By.xpath("//img[contains(@src, 'mastercard.svg') and contains(@src, 'pay')]"));
         WebElement logoMasterCardSecureCode = driver.findElement(By.xpath("//img[contains(@src, 'mastercard-secure.svg')]"));
-        WebElement logoBelkart = driver.findElement(By.xpath("//img[contains(@src, 'belkart.svg')]"));
+        WebElement logoBelkart = driver.findElement(By.xpath("//img[contains(@src, 'belkart.svg') and contains(@src, 'pay')]"));
     }
 
     @Test
