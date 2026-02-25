@@ -1,3 +1,4 @@
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +12,7 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-
+@Epic("Тесты сайта МТС")
 public class MtsByTests {
     private WebDriver driver;
     private HomePage homePage;
@@ -22,6 +23,7 @@ public class MtsByTests {
     }
 
     @BeforeEach
+    @Step("Запуск браузера, открытие сайта МТС и принятие cookies")
     public void setupTest() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-blink-features=AutomationControlled");
@@ -37,6 +39,7 @@ public class MtsByTests {
     }
 
     @AfterEach
+    @Step("Закрытие браузера")
     public void tearDown() {
         if (driver != null) {
             driver.quit();
@@ -46,6 +49,7 @@ public class MtsByTests {
     @Test
     @Order(1)
     @DisplayName("Проверка названия блока")
+    @Description("Тест проверяет, что заголовок блока содержит правильный текст")
     public void testBlockName() {
         String title = homePage.getBlockTitle();
 
@@ -56,6 +60,7 @@ public class MtsByTests {
     @Test
     @Order(2)
     @DisplayName("Проверка логотипов платежных систем")
+    @Description("Проверка отображения всех логотипов платежных систем на главной странице")
     public void testPaymentSystemLogo() {
         boolean allLogosDisplayed = homePage.checkLogos();
         assertTrue(allLogosDisplayed, "Не все логотипы платежных систем отображаются");
@@ -64,6 +69,7 @@ public class MtsByTests {
     @Test
     @Order(3)
     @DisplayName("Проверка ссылки 'Подробнее о сервисе'")
+    @Description("Проверка, что при клике на ссылку происходит переход на страницу 'Подробнее о сервисе'")
     public void testMoreAboutServiceLink() {
         String oldUrl = homePage.getCurrentUrl();
 
@@ -82,6 +88,7 @@ public class MtsByTests {
     @Test
     @Order(4)
     @DisplayName("Проверка плейсхолдеров")
+    @Description("Проверка плейсхолдеров для всех вариантов оплаты")
     public void testAllPaymentOptionsPlaceholders() {
         homePage.selectPaymentOption("Услуги связи");
         assertEquals("Номер телефона", homePage.getServicesPhonePlaceholder());
@@ -107,6 +114,7 @@ public class MtsByTests {
     @Test
     @Order(5)
     @DisplayName("Проверка оплаты")
+    @Description("Тест оплаты и названия полей")
     public void testPhonePaymentForm() {
         homePage.selectPaymentOption("Услуги связи");
         homePage.fillServicesForm("297777777", "100.00", "test@mail.ru");
@@ -119,7 +127,7 @@ public class MtsByTests {
         assertTrue(popup.getPhoneNumber().contains("297777777"));
         assertEquals("Номер карты", popup.getCardNumberLabelText());
         assertEquals("Срок действия", popup.getExpiryDateLabelText());
-        assertEquals("CVC", popup.getCvvLabelText());
+        assertEquals("CVC", popup.getCvcLabelText());
         assertTrue(popup.checkPaymentIcons());
 
         popup.closePopup();

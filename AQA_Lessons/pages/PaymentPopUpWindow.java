@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 
@@ -17,7 +18,7 @@ public class PaymentPopUpWindow {
 
     private By cardNumberLabel = By.xpath("//label[text()='Номер карты']");
     private By expiryDateLabel = By.xpath("//label[contains(text(), 'Срок действия')]");
-    private By cvсLabel = By.xpath("//label[contains(text(), 'CVC')]");
+    private By cvcLabel = By.xpath("//label[contains(text(), 'CVC')]");
 
     private By visaIcon = By.xpath("//img[contains(@src, 'visa-system.svg')]");
     private By mastercardIcon = By.xpath("//img[contains(@src, 'mastercard-system.svg')]");
@@ -29,7 +30,7 @@ public class PaymentPopUpWindow {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-
+    @Step("Переключение в iframe платежного виджета")
     private void switchToIframe() {
         try {
             Thread.sleep(3000);
@@ -42,37 +43,37 @@ public class PaymentPopUpWindow {
             throw new RuntimeException("Ошибка при переключении на фрейм: " + e.getMessage());
         }
     }
-
+    @Step("Получение суммы на карте")
     public String getAmountOnCard() {
         switchToIframe();
         return driver.findElement(amountOnCard).getText();
     }
-
+    @Step("Получение суммы на кнопке")
     public String getAmountOnButton() {
 
         return driver.findElement(amountOnButton).getText();
     }
-
+    @Step("Получение номера телефона")
     public String getPhoneNumber() {
 
         return driver.findElement(phoneNumber).getText();
     }
-
+    @Step("Получение текста плейсхолдера из поля 'номер карты'")
     public String getCardNumberLabelText() {
         switchToIframe();
         return driver.findElement(cardNumberLabel).getText();
     }
-
+    @Step("Получение текста плейсхолдера из поля 'срок действия'")
     public String getExpiryDateLabelText() {
         switchToIframe();
         return driver.findElement(expiryDateLabel).getText();
     }
-
-    public String getCvvLabelText() {
+    @Step("Получение текста плейсхолдера из поля ''")
+    public String getCvcLabelText() {
         switchToIframe();
-        return driver.findElement(cvсLabel).getText();
+        return driver.findElement(cvcLabel).getText();
     }
-
+    @Step("Проверка иконок способов оплаты")
     public boolean checkPaymentIcons() {
         try {
             driver.findElement(visaIcon).isDisplayed();
