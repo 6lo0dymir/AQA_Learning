@@ -30,8 +30,9 @@ public class PaymentPopUpWindow {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-    @Step("Переключение в iframe платежного виджета")
+
     private void switchToIframe() {
+        Allure.step("Переключиться на окно оплаты");
         try {
             Thread.sleep(3000);
             driver.switchTo().defaultContent();
@@ -43,37 +44,37 @@ public class PaymentPopUpWindow {
             throw new RuntimeException("Ошибка при переключении на фрейм: " + e.getMessage());
         }
     }
-    @Step("Получение суммы на карте")
+
     public String getAmountOnCard() {
         switchToIframe();
         return driver.findElement(amountOnCard).getText();
     }
-    @Step("Получение суммы на кнопке")
+
     public String getAmountOnButton() {
 
         return driver.findElement(amountOnButton).getText();
     }
-    @Step("Получение номера телефона")
+
     public String getPhoneNumber() {
 
         return driver.findElement(phoneNumber).getText();
     }
-    @Step("Получение текста плейсхолдера из поля 'номер карты'")
+
     public String getCardNumberLabelText() {
         switchToIframe();
         return driver.findElement(cardNumberLabel).getText();
     }
-    @Step("Получение текста плейсхолдера из поля 'срок действия'")
+
     public String getExpiryDateLabelText() {
         switchToIframe();
         return driver.findElement(expiryDateLabel).getText();
     }
-    @Step("Получение текста плейсхолдера из поля ''")
+
     public String getCvcLabelText() {
         switchToIframe();
         return driver.findElement(cvcLabel).getText();
     }
-    @Step("Проверка иконок способов оплаты")
+
     public boolean checkPaymentIcons() {
         try {
             driver.findElement(visaIcon).isDisplayed();
