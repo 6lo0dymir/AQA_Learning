@@ -52,17 +52,20 @@ public class HomePage {
 
 
     public void acceptCookies() {
+        Allure.step("Принять куки");
         WebElement cookieBtn = wait.until(ExpectedConditions.elementToBeClickable(cookieButton));
         cookieBtn.click();
     }
 
 
     public String getBlockTitle() {
+        Allure.step("Получить название блока оплаты");
         return driver.findElement(blockTitle).getText();
     }
 
 
     public boolean checkLogos() {
+        Allure.step("Проверить логотипы платежных систем на главной странице оплаты");
         try {
             driver.findElement(visaLogo).isDisplayed();
             driver.findElement(visaVerifiedLogo).isDisplayed();
@@ -77,16 +80,19 @@ public class HomePage {
 
 
     public void clickMoreAboutService() {
+        Allure.step("Перейти по ссылке 'Подробнее о сервисе'");
         driver.findElement(moreAboutServiceLink).click();
     }
 
 
     public String getCurrentUrl() {
+        Allure.step("Получить Url текущей страницы");
         return driver.getCurrentUrl();
     }
 
 
     public void selectPaymentOption(String optionText) {
+        Allure.step("Выбрать опцию оплаты из выпадающего списка");
 
         WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(paymentTypeDropdown));
         dropdown.click();
@@ -111,74 +117,89 @@ public class HomePage {
     // "Услуги связи"
 
     public String getServicesPhonePlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Номер телефона'");
         return driver.findElement(servicesPhone).getAttribute("placeholder");
     }
 
 
     public String getServicesAmountPlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Сумма'");
         return driver.findElement(servicesAmount).getAttribute("placeholder");
     }
 
 
     public String getServicesEmailPlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Email'");
         return driver.findElement(servicesEmail).getAttribute("placeholder");
     }
 
     // "Домашний интернет"
 
     public String getInternetPhonePlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Номер телефона'");
         return driver.findElement(internetPhone).getAttribute("placeholder");
     }
 
 
     public String getInternetAmountPlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Сумма'");
         return driver.findElement(internetAmount).getAttribute("placeholder");
     }
 
 
     public String getInternetEmailPlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Email'");
         return driver.findElement(internetEmail).getAttribute("placeholder");
     }
 
     // "Рассрочка"
 
     public String getInstalmentPhonePlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Номер счета на 44'");
         return driver.findElement(instalmentScore).getAttribute("placeholder");
     }
 
 
     public String getInstalmentAmountPlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Сумма'");
         return driver.findElement(instalmentAmount).getAttribute("placeholder");
     }
 
 
     public String getInstalmentEmailPlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Email'");
         return driver.findElement(instalmentEmail).getAttribute("placeholder");
     }
 
     // "Задолженность"
 
     public String getArrearsPhonePlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Номер счета на 2073'");
         return driver.findElement(arrearsScore).getAttribute("placeholder");
     }
 
 
     public String getArrearsAmountPlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Сумма'");
         return driver.findElement(arrearsAmount).getAttribute("placeholder");
     }
 
 
     public String getArrearsEmailPlaceholder() {
+        Allure.step("Получить текст из плейсхолдера 'Email'");
         return driver.findElement(arrearsEmail).getAttribute("placeholder");
     }
 
 
-    public void clickContinueButton() {
+    public void clickContinueButton()
+    {
+        Allure.step("Получить текст из плейсхолдера 'Продолжить'");
         driver.findElement(continueButton).click();
     }
 
 
     public void fillServicesForm(String phone, String amount, String email) {
+        Allure.step("Ввести данные для оплаты");
         driver.findElement(By.id("connection-phone")).sendKeys(phone);
         driver.findElement(By.id("connection-sum")).sendKeys(amount);
         driver.findElement(By.id("connection-email")).sendKeys(email);

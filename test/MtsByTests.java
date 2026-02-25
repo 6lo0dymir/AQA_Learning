@@ -80,8 +80,8 @@ public class MtsByTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         String newUrl = homePage.getCurrentUrl();
+        Allure.step("Сравнить текущий и ранее полученный Url");
         assertNotEquals(oldUrl, newUrl, "URL должен измениться после клика на ссылку");
     }
 

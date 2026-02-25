@@ -46,36 +46,44 @@ public class PaymentPopUpWindow {
     }
 
     public String getAmountOnCard() {
+        Allure.step("Получить сумму оплаты из окна оплаты");
         switchToIframe();
         return driver.findElement(amountOnCard).getText();
     }
 
     public String getAmountOnButton() {
-
+        Allure.step("Получить сумму оплаты с кнопки 'оплатить'");
+        switchToIframe();
         return driver.findElement(amountOnButton).getText();
     }
 
     public String getPhoneNumber() {
-
+        Allure.step("Получить номер телефона из окна оплаты");
+        switchToIframe();
         return driver.findElement(phoneNumber).getText();
     }
 
     public String getCardNumberLabelText() {
+        Allure.step("Получить надпись из поля 'номер карты'");
         switchToIframe();
         return driver.findElement(cardNumberLabel).getText();
     }
 
     public String getExpiryDateLabelText() {
+        Allure.step("Получить надпись из поля 'срок действия'");
         switchToIframe();
         return driver.findElement(expiryDateLabel).getText();
     }
 
     public String getCvcLabelText() {
+        Allure.step("Получить надпись из поля 'CVC'");
         switchToIframe();
         return driver.findElement(cvcLabel).getText();
     }
 
     public boolean checkPaymentIcons() {
+        Allure.step("Проверить отображение иконок оплаты в окне оплаты");
+        switchToIframe();
         try {
             driver.findElement(visaIcon).isDisplayed();
             driver.findElement(mastercardIcon).isDisplayed();
