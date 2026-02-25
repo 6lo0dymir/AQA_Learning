@@ -4,7 +4,6 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 
-import java.time.*;
 import java.time.Duration;
 
 public class HomePage {
@@ -34,12 +33,12 @@ public class HomePage {
     private By internetEmail = By.id("internet-email");
 
     // "Рассрочка"
-    private By instalmentPhone = By.id("score-instalment");
+    private By instalmentScore = By.id("score-instalment");
     private By instalmentAmount = By.id("instalment-sum");
     private By instalmentEmail = By.id("instalment-email");
 
     // "Задолженность"
-    private By arrearsPhone = By.id("score-arrears");
+    private By arrearsScore = By.id("score-arrears");
     private By arrearsAmount = By.id("arrears-sum");
     private By arrearsEmail = By.id("arrears-email");
 
@@ -129,7 +128,7 @@ public class HomePage {
 
     // "Рассрочка"
     public String getInstalmentPhonePlaceholder() {
-        return driver.findElement(instalmentPhone).getAttribute("placeholder");
+        return driver.findElement(instalmentScore).getAttribute("placeholder");
     }
 
     public String getInstalmentAmountPlaceholder() {
@@ -142,7 +141,7 @@ public class HomePage {
 
     // "Задолженность"
     public String getArrearsPhonePlaceholder() {
-        return driver.findElement(arrearsPhone).getAttribute("placeholder");
+        return driver.findElement(arrearsScore).getAttribute("placeholder");
     }
 
     public String getArrearsAmountPlaceholder() {

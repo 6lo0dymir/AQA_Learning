@@ -9,15 +9,13 @@ public class PaymentPopUpWindow {
     WebDriver driver;
     WebDriverWait wait;
 
-    private By amountOnCard = By.xpath(
-            "//div[@class='payment-page__order-description pay-description']//span[@class='ng-star-inserted']");
-    private By amountOnButton = By.xpath(
-            "//button[contains(@type, 'submit')]//span[contains(text(), 'Оплатить')]");
+    private By amountOnCard = By.xpath("//div[@class='payment-page__order-description pay-description']//span[@class='ng-star-inserted']");
+    private By amountOnButton = By.xpath("//button[contains(@type, 'submit')]//span[contains(text(), 'Оплатить')]");
     private By phoneNumber = By.xpath("//div[@class='pay-description__text']//span[contains(text(), 'Номер')]");
 
     private By cardNumberLabel = By.xpath("//label[text()='Номер карты']");
     private By expiryDateLabel = By.xpath("//label[contains(text(), 'Срок действия')]");
-    private By cvсLabel = By.xpath("//label[contains(text(), 'CVC')]");
+    private By cvcLabel = By.xpath("//label[contains(text(), 'CVC')]");
 
     private By visaIcon = By.xpath("//img[contains(@src, 'visa-system.svg')]");
     private By mastercardIcon = By.xpath("//img[contains(@src, 'mastercard-system.svg')]");
@@ -49,12 +47,12 @@ public class PaymentPopUpWindow {
     }
 
     public String getAmountOnButton() {
-
+        switchToIframe();
         return driver.findElement(amountOnButton).getText();
     }
 
     public String getPhoneNumber() {
-
+        switchToIframe();
         return driver.findElement(phoneNumber).getText();
     }
 
@@ -70,10 +68,11 @@ public class PaymentPopUpWindow {
 
     public String getCvvLabelText() {
         switchToIframe();
-        return driver.findElement(cvсLabel).getText();
+        return driver.findElement(cvcLabel).getText();
     }
 
     public boolean checkPaymentIcons() {
+        switchToIframe();
         try {
             driver.findElement(visaIcon).isDisplayed();
             driver.findElement(mastercardIcon).isDisplayed();
